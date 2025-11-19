@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 3
-  maxAngle: 20
+  maxAngle: 50
 --- !u!114 &540701961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,10 +595,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzle: {fileID: 14094707}
   aimCircle: {fileID: 1513404176}
+  cam: {fileID: 564233991}
   maxDistance: 100
   hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  pullToCameraOffset: 0.05
+  maxSphereDistanceFromMuzzle: 5
 --- !u!1 &564233989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1323,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5855247979767298243, guid: 21ba1b42c4c80d3429980336f01bddb1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e6f89dce45c7354d85f0c1ba3fac06e, type: 2}
     - target: {fileID: 8787045995847289549, guid: 21ba1b42c4c80d3429980336f01bddb1, type: 3}
       propertyPath: m_Name
       value: Aim

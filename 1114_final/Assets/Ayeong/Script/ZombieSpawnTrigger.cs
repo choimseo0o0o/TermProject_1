@@ -13,18 +13,11 @@ public class ZombieSpawnTrigger : MonoBehaviour
 
     private bool triggered = false;
 
-    private void Reset()
-    {
-        // BoxCollider를 Trigger로 자동 설정
-        Collider col = GetComponent<Collider>();
-        if (col != null)
-            col.isTrigger = true;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (triggered) return;                       // 한 번만 실행
-        if (!other.CompareTag(playerTag)) return;    // Player가 아닐 때 무시
+        //if (triggered) return;                       // 한 번만 실행
+        //if (!other.CompareTag(playerTag)) return;    // Player가 아닐 때 무시
 
         triggered = true;
 

@@ -17,12 +17,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!WeaponKeyboardAim.PlayerCanMove)
+            return;
         // 1. 지면에 닿아 있는지 확인 및 중력 초기화
         // isGrounded는 CharacterController가 제공하는 정보입니다.
         if (controller.isGrounded && velocity.y < 0)
         {
             // 지면에 닿았을 때 미끄러짐 방지
-            velocity.y = -2f; 
+            velocity.y = -2f;
         }
 
         // 2. 입력 받기 (WASD)

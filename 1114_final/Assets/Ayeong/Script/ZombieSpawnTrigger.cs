@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class ZombieSpawnTrigger : MonoBehaviour
 {
-    [Header("Player ¼³Á¤")]
-    public string playerTag = "Player";   // ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ®ÀÇ Tag
+    [Header("Player ï¿½ï¿½ï¿½ï¿½")]
+    public string playerTag = "Player";   // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Tag
 
-    [Header("µîÀå½ÃÅ³ Á»ºñµé (5¸¶¸®)")]
-    public GameObject[] zombies;          // ¹Ì¸® ±ò¾ÆµÐ Á»ºñ ¾Æ¹ÙÅ¸µé (ºñÈ°¼ºÈ­ »óÅÂ ±ÇÀå)
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ (5ï¿½ï¿½ï¿½ï¿½)")]
+    public GameObject[] zombies;          // ï¿½Ì¸ï¿½ ï¿½ï¿½Æµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½Å¸ï¿½ï¿½ (ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
-    [Header("Àç»ýÇÒ ¾Ö´Ï¸ÞÀÌ¼Ç »óÅÂ ÀÌ¸§")]
-    public string animationStateName = "ZombieWalk";   // Animator¿¡ ÀÖ´Â »óÅÂ ÀÌ¸§
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½")]
+    public string animationStateName = "ZombieWalk";   // Animatorï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 
     private bool triggered = false;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (triggered) return;                       // ÇÑ ¹ø¸¸ ½ÇÇà
-        //if (!other.CompareTag(playerTag)) return;    // Player°¡ ¾Æ´Ò ¶§ ¹«½Ã
+        //if (triggered) return;                       // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //if (!other.CompareTag(playerTag)) return;    // Playerï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         triggered = true;
 
@@ -25,11 +25,11 @@ public class ZombieSpawnTrigger : MonoBehaviour
         {
             if (zombie == null) continue;
 
-            // ºñÈ°¼ºÈ­ »óÅÂ¶ó¸é ¸ÕÀú ÄÑ±â
+            // ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½
             if (!zombie.activeSelf)
                 zombie.SetActive(true);
 
-            // Animator Ã£¾Æ¼­ ¾Ö´Ï¸ÞÀÌ¼Ç Àç»ý
+            // Animator Ã£ï¿½Æ¼ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½
             Animator anim = zombie.GetComponent<Animator>();
             if (anim != null && !string.IsNullOrEmpty(animationStateName))
             {

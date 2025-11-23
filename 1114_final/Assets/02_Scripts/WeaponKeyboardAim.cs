@@ -3,69 +3,155 @@ using UnityEngine;
 public class WeaponKeyboardAim : MonoBehaviour
 {
     [Header("조준 설정")]
-    public float rotateSpeed = 60f;  // 1초에 몇 도 회전할지 (도/초)
+    public float rotateSpeed = 60f;
 
-    [Header("총구 & 탄 설정")]
-    public Transform muzzle;           // 총구 끝(총알이 나가는 위치)
-    public GameObject bulletPrefab;    // Sphere(총알) 프리팹
-    public float bulletSpeed = 20f;    // 총알 속도
-    public float bulletLifeTime = 5f;  // 총알 자동 삭제 시간
+    [Header("Ray 설정")]
+    public float rayDistance = 100f;
+    public Color defaultRayColor = Color.red;
+    public Color firedRayColor = Color.green;
+    public float cylinderRadius = 0.05f;
+
+    [Header("씬에서 연결할 실린더 & 시작점")]
+    public Transform rayCylinder;   // 실린더(자식 Cylinder)
+    public Transform rayOrigin;     // 레이 출발 오브젝트 (예: Muzzle)
+    public TMPro.TextMeshProUGUI Notice_Dead;
+    public GameObject RestartButton;
+
+    private Color currentRayColor;
+    private Renderer cylRenderer;
+    private Material cylMat;
+    public static bool PlayerCanMove;
+
+    public static bool ContinuePlay, PlayerBitten, PlayerKilledZombie;
+
+    public TMPro.TextMeshProUGUI killedText;
+    private int killedCount = 0;
+
+    void Awake()
+    {
+        currentRayColor = defaultRayColor;
+
+        // 시작점이 비어 있으면 자기 자신 기준
+        if (rayOrigin == null)
+            rayOrigin = transform;
+
+        // Cylinder 준비
+        if (rayCylinder != null)
+        {
+            cylRenderer = rayCylinder.GetComponent<Renderer>();
+            cylMat = new Material(Shader.Find("Unlit/Color"));
+            cylRenderer.material = cylMat;
+            cylMat.color = currentRayColor;
+        }
+        PlayerCanMove = true;
+
+        killedText.text = "Killed: " + killedCount.ToString();
+    }
 
     void Update()
     {
         HandleAim();
-        HandleShoot();
+
+        // ★ 여기서부터는 rayOrigin 기준으로 Ray 생성
+        Vector3 originPos = rayOrigin.position;
+        Vector3 originDir = rayOrigin.forward;
+
+        Ray ray = new Ray(originPos, originDir);
+
+        HandleRaycast(ray);
+        UpdateCylinder(ray);
     }
 
     void HandleAim()
     {
-        // Q : 왼쪽 회전, W : 오른쪽 회전
-        float rotateDir = 0f;
+        float dir = 0f;
 
-        if (Input.GetKey(KeyCode.Q))
-        {
-            // 왼쪽 (보통 Y축 기준 반시계 회전이라고 가정)
-            rotateDir = -1f;
-        }
-        else if (Input.GetKey(KeyCode.W))
-        {
-            // 오른쪽
-            rotateDir = 1f;
-        }
+        if (Input.GetKey(KeyCode.Q)) dir = -1f;
+        else if (Input.GetKey(KeyCode.E)) dir = 1f;
 
-        if (rotateDir != 0f)
+        if (dir != 0f)
         {
-            // pivot(현재 오브젝트의 위치)을 기준으로 Y축 회전
-            float deltaAngle = rotateSpeed * rotateDir * Time.deltaTime;
-            transform.Rotate(0f, deltaAngle, 0f, Space.Self);
+            float delta = rotateSpeed * dir * Time.deltaTime;
+            transform.Rotate(0f, delta, 0f, Space.Self);
         }
     }
 
-    void HandleShoot()
+    void HandleRaycast(Ray ray)
     {
-        // 스페이스바를 "딱 눌렀을 때" 한 번만 발사
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (muzzle == null || bulletPrefab == null)
-                return;
+            currentRayColor = firedRayColor;
 
-            // 1. 총알 생성 (총구 위치 & 방향)
-            GameObject bullet = Instantiate(
-                bulletPrefab,
-                muzzle.position,
-                muzzle.rotation
-            );
+            int zombieLayer = LayerMask.NameToLayer("Zombie");
+            int continueLayer = LayerMask.NameToLayer("Continue");
 
-            // 2. Rigidbody가 있으면 앞으로 날려보내기
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            if (rb != null)
+            int mask = (1 << zombieLayer) | (1 << continueLayer);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, mask))
             {
-                rb.linearVelocity = muzzle.forward * bulletSpeed;
-                // 또는 rb.AddForce(muzzle.forward * bulletSpeed, ForceMode.VelocityChange);
-            }
+                if (hit.collider.gameObject.layer == continueLayer)
+                {
+                    ContinuePlay = true;
+                    Notice_Dead.gameObject.SetActive(false);
+                    RestartButton.SetActive(false);
+                    Debug.Log("게임 재개 버튼 눌림");
+                    PlayerCanMove = true;
+                }
 
-            // 3. 일정 시간 후 자동 삭제
-            Destroy(bullet, bulletLifeTime);
+                if (hit.collider.gameObject.layer == zombieLayer)
+                {
+                    Debug.Log("좀비 맞음");
+                    killedCount++;
+                    killedText.text = "Killed: " + killedCount.ToString();
+                    PlayerKilledZombie = true;
+                }
+
+            }
         }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            currentRayColor = defaultRayColor;
+        }
+    }
+
+    void UpdateCylinder(Ray ray)
+    {
+        if (rayCylinder == null || cylMat == null)
+            return;
+
+        Vector3 start = ray.origin;
+        Vector3 end = ray.origin + ray.direction * rayDistance;
+        Vector3 mid = (start + end) * 0.5f;
+
+        // 위치: 시작점과 끝점의 가운데
+        rayCylinder.position = mid;
+
+        // 방향: Ray 방향을 따라가도록 (Cylinder는 Y축이 길이)
+        rayCylinder.rotation =
+            Quaternion.LookRotation(ray.direction) * Quaternion.Euler(90f, 0f, 0f);
+
+        // 스케일: 길이/굵기
+        rayCylinder.localScale = new Vector3(
+            cylinderRadius * 2f,      // X 지름
+            rayDistance * 0.5f,      // Y 길이 절반
+            cylinderRadius * 2f       // Z 지름
+        );
+
+        cylMat.color = currentRayColor;
+
+        // Scene 뷰 확인용
+        Debug.DrawRay(start, ray.direction * rayDistance, currentRayColor);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Color gizmoColor = Application.isPlaying ? currentRayColor : defaultRayColor;
+        Gizmos.color = gizmoColor;
+
+        Transform originT = (rayOrigin != null) ? rayOrigin : transform;
+        Vector3 start = originT.position;
+        Vector3 end = start + originT.forward * rayDistance;
+
+        Gizmos.DrawLine(start, end);
     }
 }

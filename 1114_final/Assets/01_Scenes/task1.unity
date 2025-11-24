@@ -214,7 +214,7 @@ Transform:
   m_GameObject: {fileID: 193435576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.251741, y: 3.6219618, z: 0.87}
+  m_LocalPosition: {x: 22.251741, y: 3.6219618, z: 3.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -232,17 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92afe0b2910479fabec8653dfc45c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 952071556}
-  zombieObject: {fileID: 673251706}
-  animatorParamName: isChasing
-  triggerRadius: 3
-  moveSpeed: 1
-  zombieAnim: {fileID: 0}
-  boxCollider: {fileID: 0}
-  playerTarget: {fileID: 0}
-  isChasing: 0
-  triggered: 0
-  stoppedByKey: 0
 --- !u!114 &193435580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c3417c10f13d0d74f87729f944e05d6b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c3417c10f13d0d74f87729f944e05d6b, type: 3}
       propertyPath: m_TagString
@@ -840,7 +829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b39d3bfc59bd08649aa4c4c873ee45ed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.618
+      value: 10.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b39d3bfc59bd08649aa4c4c873ee45ed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1020,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b39d3bfc59bd08649aa4c4c873ee45ed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b39d3bfc59bd08649aa4c4c873ee45ed, type: 3}
       propertyPath: m_TagString
@@ -1232,13 +1221,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510040493}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.0005347804, y: 0.23786677, z: -0.04254783, w: 0.9703653}
   m_LocalPosition: {x: -0.734, y: 1.761, z: 3.708}
   m_LocalScale: {x: 0.24999999, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 564233992}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.219, y: 27.497, z: -4.723}
 --- !u!135 &510040495
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1686,8 +1675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef23655446f93a147bce0605bb1123db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  dead: 0
 --- !u!1 &704415246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b39d3bfc59bd08649aa4c4c873ee45ed, type: 3}
@@ -1722,9 +1709,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1990960346}
-  - {fileID: 1644675111}
   - {fileID: 491174122}
+  - {fileID: 1644675111}
+  - {fileID: 1990960346}
   - {fileID: 195393870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2462,7 +2449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4160326e23fad4f46aa82be3236345be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.623
+      value: 12.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4160326e23fad4f46aa82be3236345be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2666,7 +2653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4160326e23fad4f46aa82be3236345be, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4160326e23fad4f46aa82be3236345be, type: 3}
       propertyPath: m_TagString
@@ -2838,13 +2825,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132792707}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.0005347804, y: 0.23786677, z: -0.04254783, w: 0.9703653}
   m_LocalPosition: {x: -1.409, y: 1.759, z: 3.688}
   m_LocalScale: {x: 0.24999999, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 564233992}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.219, y: 27.497, z: -4.723}
 --- !u!135 &1132792709
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3047,15 +3034,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 23795328939153217, guid: 3e92b1b5ab15544159c3f27a65a9f02c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.87
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 23795328939153217, guid: 3e92b1b5ab15544159c3f27a65a9f02c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.309
       objectReference: {fileID: 0}
     - target: {fileID: 23795328939153217, guid: 3e92b1b5ab15544159c3f27a65a9f02c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.846
+      value: 0.835
       objectReference: {fileID: 0}
     - target: {fileID: 23795328939153217, guid: 3e92b1b5ab15544159c3f27a65a9f02c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3548,7 +3535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c90355e437ae5674e8067b6cad1b77cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.167
+      value: 6.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c90355e437ae5674e8067b6cad1b77cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3736,7 +3723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c90355e437ae5674e8067b6cad1b77cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c90355e437ae5674e8067b6cad1b77cf, type: 3}
       propertyPath: m_TagString
@@ -4079,13 +4066,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912816231}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.0005347804, y: 0.23786677, z: -0.04254783, w: 0.9703653}
   m_LocalPosition: {x: -1.063, y: 1.76, z: 3.698}
   m_LocalScale: {x: 0.24999999, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 564233992}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.219, y: 27.497, z: -4.723}
 --- !u!135 &1912816233
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4198,8 +4185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef23655446f93a147bce0605bb1123db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  dead: 0
 --- !u!1 &1995619263
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,7 +4219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.8300001, y: 0.51500005}
+  m_AnchoredPosition: {x: -0.837, y: 0.522}
   m_SizeDelta: {x: 1.6599997, y: 1.0299999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1995619265
@@ -4364,7 +4349,7 @@ Transform:
   m_GameObject: {fileID: 2030083172}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.251741, y: 3.6219618, z: -3.06}
+  m_LocalPosition: {x: 22.251741, y: 3.6219618, z: -0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4382,17 +4367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8e30a4d536843ecb1f9e78945f5be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 952071556}
-  zombieObject: {fileID: 704415246}
-  animatorParamName: isChasing
-  triggerRadius: 3
-  moveSpeed: 1
-  zombieAnim: {fileID: 0}
-  boxCollider: {fileID: 0}
-  playerTarget: {fileID: 0}
-  isChasing: 0
-  triggered: 0
-  stoppedByKey: 0
 --- !u!114 &2030083176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4464,7 +4438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.8300001, y: 0.32000005}
+  m_AnchoredPosition: {x: -0.895, y: 0.371}
   m_SizeDelta: {x: 1.6599997, y: 0.63999987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045545550

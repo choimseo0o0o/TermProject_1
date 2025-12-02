@@ -5095,7 +5095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localPosA: {fileID: 1721802225}
   localPosB: {fileID: 1907123420}
-  duration: 60
+  duration: 30
+  showCanvas: {fileID: 0}
 --- !u!33 &1414767482
 MeshFilter:
   m_ObjectHideFlags: 0

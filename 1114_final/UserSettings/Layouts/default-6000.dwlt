@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Inspector
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 653
     height: 279
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 126}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 1961
+  controlID: 101
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 41
+  controlID: 130
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 42
+  controlID: 43
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 43
+  controlID: 44
   draggingID: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -568,7 +568,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Ayeong/MiniMap
+    - Assets/01_Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -578,16 +578,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Ayeong/MiniMap
+  - Assets/01_Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\adam\Documents\GitHub\TermProject_1\1114_final
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 18}
-    m_SelectedIDs: 66dc0000
-    m_LastClickedID: 56422
-    m_ExpandedIDs: 0000000088d800008ad800006cdc0000ace00000aee0000000ca9a3bffffff7f
+    m_SelectedIDs: 98d20000
+    m_LastClickedID: 53912
+    m_ExpandedIDs: 0000000074ce000076ce000078ce00007ace00007cce000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -616,7 +616,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000088d800008ad80000
+    m_ExpandedIDs: 0000000074ce000076ce000078ce00007ace00007cce0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -648,18 +648,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000a02f030000000000f66f0800f86f080052cf0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Zombie8 Animator Controller
-      m_OriginalName: Zombie8 Animator Controller
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -226622
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 7}
@@ -762,23 +762,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 32d40500
-      m_LastClickedID: 382002
-      m_ExpandedIDs: 1ec6fbff6ad1fbffac5ffcffc45ffcff4062fcffd866fcff2268fcffec71fcff9a89fcffbacffcff86dffcfff8f1fcff6c01fdffdc13fdff1e23fdfffc32fdff14b9feff1cb9feff20b9feff24b9feff28b9feff22d6feffae7affff6cb2ffff88b3ffff48c100005cc1000084c10000a0c100006eae0100a2ae0100c6ae01004e630400626304008c63040094630400b2630400d06b04006480040082800400b4800400bc800400da80040092d30500a6d30500ced30500ecd30500
+      m_SelectedIDs: 6cde0000
+      m_LastClickedID: 56940
+      m_ExpandedIDs: fad0ffff64d3ffff9ed5ffff14e7fffffef1ffff02fbffff7ab500008eb50000b6b50000d4b500009ad60000a8d60000aed60000e0d60000fed6000088dd0000acdd000010de0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Parasite L Starkie
-        m_OriginalName: Parasite L Starkie
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 295360
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 6}
@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.068937935, y: -0.012192602, z: 0.00094520237, w: 0.997615}
     speed: 2
-    m_Value: {x: 0.0689332, y: -0.012191764, z: 0.00094513735, w: 0.9975464}
+    m_Value: {x: -0.06893793, y: 0.012192602, z: -0.00094520237, w: -0.9976149}
   m_Size:
     m_Target: 0.70752466
     speed: 2

@@ -27,6 +27,9 @@ public class WeaponKeyboardAim : MonoBehaviour
     public TMPro.TextMeshProUGUI killedText;
     private int killedCount = 0;
 
+    public static string ZombieName;
+    private string PreviousZombieName;
+
     void Awake()
     {
         currentRayColor = defaultRayColor;
@@ -101,9 +104,20 @@ public class WeaponKeyboardAim : MonoBehaviour
                 if (hit.collider.gameObject.layer == zombieLayer)
                 {
                     Debug.Log("좀비 맞음");
-                    killedCount++;
-                    killedText.text = "Killed: " + killedCount.ToString();
+                    ZombieName = hit.collider.gameObject.name;
+                    Debug.Log("ZombieName: " + ZombieName);
                     PlayerKilledZombie = true;
+
+                    if (ZombieName == PreviousZombieName)
+                        return;
+                    else
+                        PreviousZombieName = ZombieName;
+
+                    Debug.Log("New ZombieName: " + ZombieName);
+                    killedCount++;
+
+                    Debug.Log("KillCount: " + killedCount);
+                    killedText.text = "Killed: " + killedCount.ToString();
                 }
 
             }

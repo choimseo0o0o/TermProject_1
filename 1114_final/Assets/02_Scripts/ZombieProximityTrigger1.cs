@@ -3,8 +3,8 @@ using UnityEngine;
 public class ZombieProximityTrigger1 : MonoBehaviour
 {
     [Header("참조")]
-    public Transform player;
-    public GameObject zombieObject;
+    public Transform player;          // 플레이어 Transform
+    public GameObject zombieObject;   // 한 마리만 사용
     public string animatorParamName = "isChasing";
 
     [Header("설정")]
@@ -14,17 +14,17 @@ public class ZombieProximityTrigger1 : MonoBehaviour
     private BoxCollider boxCollider;
     private Transform playerTarget;
 
-    private bool PlayerEntered = false;   // ★ 콜라이더로 진입 감지
+    private bool PlayerEntered = false;   // 트리거 진입 여부
     private bool isChasing = false;
     private bool triggered = false;
 
     void Start()
     {
         if (zombieObject != null)
+        {
             zombieAnim = zombieObject.GetComponent<Animator>();
-
-        if (zombieObject != null)
             boxCollider = zombieObject.GetComponent<BoxCollider>();
+        }
 
         if (player == null)
         {
@@ -38,7 +38,7 @@ public class ZombieProximityTrigger1 : MonoBehaviour
         if (player == null || zombieObject == null)
             return;
 
-        // ★ PlayerEntered가 false면 아무 동작도 안 함
+        // 트리거에 들어오기 전이면 아무 동작도 하지 않음
         if (!PlayerEntered)
             return;
 
@@ -54,17 +54,18 @@ public class ZombieProximityTrigger1 : MonoBehaviour
 
             Debug.Log("[ZombieProximityTrigger] 추격 시작");
 
-            if (zombieObject.activeSelf == false)
+            if (!zombieObject.activeSelf)
             {
                 zombieObject.SetActive(true);
-                zombieAnim.CrossFade("Zombie Walk", 0.15f);
+                if (zombieAnim != null)
+                    zombieAnim.CrossFade("Zombie Walk", 0.15f);
             }
         }
 
         // 2. 추격 이동
         if (isChasing && playerTarget != null)
         {
-            if (boxCollider != null && boxCollider.enabled == false)
+            if (boxCollider != null && !boxCollider.enabled)
                 boxCollider.enabled = true;
 
             Vector3 dir = playerTarget.position - zombieObject.transform.position;
@@ -85,6 +86,7 @@ public class ZombieProximityTrigger1 : MonoBehaviour
         if (WeaponKeyboardAim.PlayerBitten)
         {
             WeaponKeyboardAim.PlayerBitten = false;
+            isChasing = false;
 
             if (zombieAnim != null)
             {
@@ -93,26 +95,25 @@ public class ZombieProximityTrigger1 : MonoBehaviour
             }
 
             Debug.Log("[ZombieProximityTrigger] 추격 중지 + Standing CrossFade");
+            Destroy(zombieObject.gameObject, 5f);
             Destroy(this.gameObject, 5f);
-            Destroy(zombieObject.gameObject);
         }
 
-        // 4. Continue 버튼 눌렀을 때(현재 기능 비활성)
+        // 4. Continue 버튼 눌렀을 때 (현재 사용 안 함)
         if (WeaponKeyboardAim.ContinuePlay)
         {
-            // 기능 주석 처리
+            // 필요하면 구현
         }
 
-        // 5. 좀비가 플레이어에게 사망했을 때
+        // 5. 플레이어가 좀비를 죽였을 때
         if (WeaponKeyboardAim.PlayerKilledZombie)
         {
+            if (WeaponKeyboardAim.ZombieName != zombieObject.name)
+                return;
             isChasing = false;
             playerTarget = null;
 
-            if (boxCollider != null)
-                boxCollider.enabled = false;
-
-            WeaponKeyboardAim.PlayerKilledZombie = false;
+            boxCollider.enabled = false;
 
             if (zombieAnim != null)
             {
@@ -123,10 +124,12 @@ public class ZombieProximityTrigger1 : MonoBehaviour
 
             Destroy(zombieObject, 5f);
             Destroy(this.gameObject, 5f);
+
+            WeaponKeyboardAim.PlayerKilledZombie = false;
         }
     }
 
-    // ★ Player가 이 Collider로 들어왔는지 체크
+    // Player가 이 Collider로 들어왔는지 체크
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

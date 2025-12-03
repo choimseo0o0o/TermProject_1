@@ -3,18 +3,24 @@ using UnityEngine;
 public class ZombieProximityTrigger1 : MonoBehaviour
 {
     [Header("참조")]
-    public Transform player;          // 플레이어 Transform
-    public GameObject zombieObject;   // 한 마리만 사용
+    public Transform player;
+    public GameObject zombieObject;
     public string animatorParamName = "isChasing";
 
     [Header("설정")]
     public float moveSpeed = 2.0f;
 
+    [Header("사운드 클립 설정 (AudioClip만 넣으면 됨)")]
+    public AudioSource audioSource;    // 스피커 1개
+    public AudioClip soundChase;       // A
+    public AudioClip soundBitten;      // B
+    public AudioClip soundZombieDie;   // C
+
     private Animator zombieAnim;
     private BoxCollider boxCollider;
     private Transform playerTarget;
 
-    private bool PlayerEntered = false;   // 트리거 진입 여부
+    private bool PlayerEntered = false;
     private bool isChasing = false;
     private bool triggered = false;
 
@@ -38,11 +44,10 @@ public class ZombieProximityTrigger1 : MonoBehaviour
         if (player == null || zombieObject == null)
             return;
 
-        // 트리거에 들어오기 전이면 아무 동작도 하지 않음
         if (!PlayerEntered)
             return;
 
-        // 1. 추격 시작
+        // A - 추격 시작
         if (!triggered)
         {
             triggered = true;
@@ -54,6 +59,8 @@ public class ZombieProximityTrigger1 : MonoBehaviour
 
             Debug.Log("[ZombieProximityTrigger] 추격 시작");
 
+            Play(soundChase);
+
             if (!zombieObject.activeSelf)
             {
                 zombieObject.SetActive(true);
@@ -62,7 +69,7 @@ public class ZombieProximityTrigger1 : MonoBehaviour
             }
         }
 
-        // 2. 추격 이동
+        // 추격 이동
         if (isChasing && playerTarget != null)
         {
             if (boxCollider != null && !boxCollider.enabled)
@@ -82,9 +89,11 @@ public class ZombieProximityTrigger1 : MonoBehaviour
             }
         }
 
-        // 3. 플레이어가 좀비에게 물렸을 때
+        // B - 플레이어가 물렸을 때
         if (WeaponKeyboardAim.PlayerBitten)
         {
+            Debug.Log("[ZombieProximityTrigger] PlayerBitten 블록 진입");
+
             WeaponKeyboardAim.PlayerBitten = false;
             isChasing = false;
 
@@ -94,33 +103,33 @@ public class ZombieProximityTrigger1 : MonoBehaviour
                 zombieAnim.CrossFade("ZombieStanding", 0.15f);
             }
 
-            Debug.Log("[ZombieProximityTrigger] 추격 중지 + Standing CrossFade");
-            Destroy(zombieObject.gameObject, 5f);
+            Debug.Log("[ZombieProximityTrigger] Bitten 사운드 재생 시도");
+            Play(soundBitten);
+
+            Destroy(zombieObject, 5f);
             Destroy(this.gameObject, 5f);
         }
 
-        // 4. Continue 버튼 눌렀을 때 (현재 사용 안 함)
-        if (WeaponKeyboardAim.ContinuePlay)
-        {
-            // 필요하면 구현
-        }
-
-        // 5. 플레이어가 좀비를 죽였을 때
+        // C - 좀비가 죽었을 때
         if (WeaponKeyboardAim.PlayerKilledZombie)
         {
             if (WeaponKeyboardAim.ZombieName != zombieObject.name)
                 return;
+
             isChasing = false;
             playerTarget = null;
 
-            boxCollider.enabled = false;
+            if (boxCollider != null)
+                boxCollider.enabled = false;
 
             if (zombieAnim != null)
             {
                 zombieAnim.SetBool(animatorParamName, false);
                 zombieAnim.CrossFade("ZombieDying", 0.15f);
-                Debug.Log("[ZombieProximityTrigger] ZombieDying 재생");
             }
+
+            Debug.Log("[ZombieProximityTrigger] ZombieDie 사운드 재생 시도");
+            Play(soundZombieDie);
 
             Destroy(zombieObject, 5f);
             Destroy(this.gameObject, 5f);
@@ -129,13 +138,19 @@ public class ZombieProximityTrigger1 : MonoBehaviour
         }
     }
 
-    // Player가 이 Collider로 들어왔는지 체크
+    private void Play(AudioClip clip)
+    {
+        if (audioSource == null || clip == null)
+            return;
+
+        audioSource.PlayOneShot(clip);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             PlayerEntered = true;
-            Debug.Log("Player Entered Zombie Trigger");
         }
     }
 }

@@ -5,7 +5,7 @@ public class HudCornerLock : MonoBehaviour
 {
     public enum Corner { TopLeft, TopRight, BottomLeft, BottomRight }
     public Corner corner = Corner.TopLeft;
-    public Vector2 offset = new Vector2(40f, -40f); // 구석에서의 픽셀 오프셋
+    public Vector2 offset = new Vector2(40f, -40f); // 
 
     void Awake()
     {

@@ -17,6 +17,10 @@ public class WeaponKeyboardAim : MonoBehaviour
     public TMPro.TextMeshProUGUI Notice_Dead;
     public GameObject RestartButton;
 
+    [Header("사운드 설정")]
+    public AudioSource fireAudioSource;  // 총 소리용 AudioSource
+    public AudioClip fireClip;           // 스페이스바(발사) 사운드
+
     private Color currentRayColor;
     private Renderer cylRenderer;
     private Material cylMat;
@@ -48,14 +52,15 @@ public class WeaponKeyboardAim : MonoBehaviour
         }
         PlayerCanMove = true;
 
-        killedText.text = "Killed: " + killedCount.ToString();
+        if (killedText != null)
+            killedText.text = "Killed : " + killedCount.ToString();
     }
 
     void Update()
     {
         HandleAim();
 
-        // ★ 여기서부터는 rayOrigin 기준으로 Ray 생성
+        // rayOrigin 기준으로 Ray 생성
         Vector3 originPos = rayOrigin.position;
         Vector3 originDir = rayOrigin.forward;
 
@@ -83,6 +88,9 @@ public class WeaponKeyboardAim : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // 🔊 스페이스바(발사) 사운드 재생
+            PlayFireSound();
+
             currentRayColor = firedRayColor;
 
             int zombieLayer = LayerMask.NameToLayer("Zombie");
@@ -95,8 +103,11 @@ public class WeaponKeyboardAim : MonoBehaviour
                 if (hit.collider.gameObject.layer == continueLayer)
                 {
                     ContinuePlay = true;
-                    Notice_Dead.gameObject.SetActive(false);
-                    RestartButton.SetActive(false);
+                    if (Notice_Dead != null)
+                        Notice_Dead.gameObject.SetActive(false);
+                    if (RestartButton != null)
+                        RestartButton.SetActive(false);
+
                     Debug.Log("게임 재개 버튼 눌림");
                     PlayerCanMove = true;
                 }
@@ -115,11 +126,11 @@ public class WeaponKeyboardAim : MonoBehaviour
 
                     Debug.Log("New ZombieName: " + ZombieName);
                     killedCount++;
-
                     Debug.Log("KillCount: " + killedCount);
-                    killedText.text = "Killed: " + killedCount.ToString();
-                }
 
+                    if (killedText != null)
+                        killedText.text = "Killed : " + killedCount.ToString();
+                }
             }
         }
         else if (Input.GetKeyUp(KeyCode.Space))
@@ -147,7 +158,7 @@ public class WeaponKeyboardAim : MonoBehaviour
         // 스케일: 길이/굵기
         rayCylinder.localScale = new Vector3(
             cylinderRadius * 2f,      // X 지름
-            rayDistance * 0.5f,      // Y 길이 절반
+            rayDistance * 0.5f,       // Y 길이 절반
             cylinderRadius * 2f       // Z 지름
         );
 
@@ -167,5 +178,17 @@ public class WeaponKeyboardAim : MonoBehaviour
         Vector3 end = start + originT.forward * rayDistance;
 
         Gizmos.DrawLine(start, end);
+    }
+
+    // 🔊 발사 사운드 전용 함수
+    private void PlayFireSound()
+    {
+        if (fireAudioSource == null || fireClip == null)
+            return;
+
+        // 같은 사운드를 연속 발사하고 싶으면 Stop()은 빼도 됨
+        fireAudioSource.Stop();
+        fireAudioSource.clip = fireClip;
+        fireAudioSource.Play();
     }
 }

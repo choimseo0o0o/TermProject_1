@@ -17,6 +17,9 @@ public class WeaponKeyboardAim : MonoBehaviour
     public TMPro.TextMeshProUGUI Notice_Dead;
     public GameObject RestartButton;
 
+    [Header("VFX 설정")]
+    public GameObject bloodVFX;     // 좀비 맞았을 때 터질 피 VFX 프리팹
+
     [Header("사운드 설정")]
     public AudioSource fireAudioSource;  // 총 소리용 AudioSource
     public AudioClip fireClip;           // 스페이스바(발사) 사운드
@@ -119,6 +122,12 @@ public class WeaponKeyboardAim : MonoBehaviour
                     Debug.Log("ZombieName: " + ZombieName);
                     PlayerKilledZombie = true;
 
+                    // ★ 피터지는 VFX 실행
+                    if (bloodVFX != null)
+                    {
+                        Instantiate(bloodVFX, hit.point, Quaternion.LookRotation(hit.normal));
+                    }
+
                     if (ZombieName == PreviousZombieName)
                         return;
                     else
@@ -186,7 +195,6 @@ public class WeaponKeyboardAim : MonoBehaviour
         if (fireAudioSource == null || fireClip == null)
             return;
 
-        // 같은 사운드를 연속 발사하고 싶으면 Stop()은 빼도 됨
         fireAudioSource.Stop();
         fireAudioSource.clip = fireClip;
         fireAudioSource.Play();

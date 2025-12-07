@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Long_Window
+  m_Name: MI_Bed_Window 2
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -29,31 +29,31 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Material_Texture2D_0:
-        m_Texture: {fileID: 2800000, guid: abc00000000015094495894631533648, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000003990942915490957301, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Material_Texture2D_1:
-        m_Texture: {fileID: 2800000, guid: abc00000000016026397762950983231, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000008610874110026548304, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Material_Texture2D_2:
-        m_Texture: {fileID: 2800000, guid: abc00000000010876520869953329193, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000005142528392807893052, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Material_Texture2D_3:
-        m_Texture: {fileID: 2800000, guid: abc00000000007187393601290701828, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000012634400706571763537, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Material_Texture2D_4:
-        m_Texture: {fileID: 2800000, guid: abc00000000000193826181639232512, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000011050801353412238335, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: abc00000000016026397762950983231, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000008610874110026548304, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: abc00000000015094495894631533648, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000003990942915490957301, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -73,15 +73,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: abc00000000016026397762950983231, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000008610874110026548304, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: abc00000000010876520869953329193, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000005142528392807893052, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: abc00000000000193826181639232512, type: 3}
+        m_Texture: {fileID: 2800000, guid: abc00000000011050801353412238335, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -106,6 +106,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -141,13 +142,13 @@ Material:
     - LocalObjectBoundsMax: {r: 100, g: 100, b: 100, a: 0}
     - LocalObjectBoundsMin: {r: 0, g: 0, b: 0, a: 0}
     - View_BufferSizeAndInvSize: {r: 1920, g: 1080, b: 0.00052, a: 0.00092}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.36862746, g: 0.078431375, b: 0.25490198, a: 1}
+    - _Color: {r: 0.36862743, g: 0.078431346, b: 0.25490195, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &1006136022181202806
+--- !u!114 &6517644089772427164
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

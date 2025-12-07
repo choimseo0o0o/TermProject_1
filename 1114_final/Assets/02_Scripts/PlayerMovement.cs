@@ -13,6 +13,13 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource inputAudioSource;
     public AudioClip inputSound;
 
+    [Header("이동 제한 (월드 좌표 기준)")]
+    public bool useLimit = true;   // 제한을 켜고/끄고 싶을 때
+    public float minX = -5f;
+    public float maxX = 5f;
+    public float minZ = -5f;
+    public float maxZ = 5f;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -51,6 +58,18 @@ public class PlayerMovement : MonoBehaviour
         // 중력 적용
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        // ------------ 위치 제한 ------------
+        if (useLimit)
+        {
+            Vector3 pos = transform.position;
+
+            pos.x = Mathf.Clamp(pos.x, minX, maxX);
+            pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
+
+            transform.position = pos;
+        }
+        // ----------------------------------
     }
 
     private void PlayInputSound()

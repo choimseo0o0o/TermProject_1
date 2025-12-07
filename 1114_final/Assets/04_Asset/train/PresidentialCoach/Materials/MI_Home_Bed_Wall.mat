@@ -141,8 +141,8 @@ Material:
     - LocalObjectBoundsMax: {r: 100, g: 100, b: 100, a: 0}
     - LocalObjectBoundsMin: {r: 0, g: 0, b: 0, a: 0}
     - View_BufferSizeAndInvSize: {r: 1920, g: 1080, b: 0.00052, a: 0.00092}
-    - _BaseColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
-    - _Color: {r: 0.5566037, g: 0.5566037, b: 0.5566037, a: 1}
+    - _BaseColor: {r: 0.6132076, g: 0.29214135, b: 0.29214135, a: 1}
+    - _Color: {r: 0.6132076, g: 0.29214132, b: 0.29214132, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

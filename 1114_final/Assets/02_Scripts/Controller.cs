@@ -17,6 +17,7 @@ namespace SimpleFPS
         private bool isGrabbing = false;
         private Transform grabbedObject;
         private Vector3 grabOffset;
+        float IndexTimer;
 
         void Start()
         {
@@ -35,6 +36,7 @@ namespace SimpleFPS
             if (rightController == null) return;
 
             GunTimer += Time.deltaTime;
+            IndexTimer += Time.deltaTime;
 
             // === Raycast 처리 ===
             Ray ray = new Ray(rightController.position, rightController.forward);
@@ -62,6 +64,9 @@ namespace SimpleFPS
             if (OVRInput.GetDown(OVRInput.Button.Two) && IsOkayToPressContB)
                 RightContB = true;
 
+            if(OVRInput.GetDown(OVRInput.Button.Four))
+                RightThumbClick = !RightThumbClick;
+
             // 썸스틱: 이동 감지
             Vector2 thumbstick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
             if (thumbstick.magnitude > 0.1f)
@@ -72,11 +77,6 @@ namespace SimpleFPS
             else
                 PlayerIsMoving = false;
 
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick))
-            {
-                RightThumbClick = !RightThumbClick;
-                Debug.Log("Right Thumbstick Clicked");
-            }
 
             // 그랩 버튼 
             float rightGrip = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch);

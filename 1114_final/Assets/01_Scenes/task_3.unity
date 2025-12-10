@@ -18603,6 +18603,7 @@ MonoBehaviour:
   killedText: {fileID: 8542027628232157189}
   GunFire: {fileID: 1792479375511713069}
   VFX_Flash: {fileID: 1666988360}
+  MiniMap: {fileID: 913325876777678251}
 --- !u!33 &8641153861604537622
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18671,7 +18672,7 @@ Transform:
   m_GameObject: {fileID: 6423982114043454577}
   serializedVersion: 2
   m_LocalRotation: {x: -0.088391356, y: -0.014671369, z: 0.00019113634, w: -0.99597776}
-  m_LocalPosition: {x: -935.461, y: -477.328, z: -11.504}
+  m_LocalPosition: {x: -935.6691, y: -477.247, z: -11.9689}
   m_LocalScale: {x: 0.01, y: 0.011001735, z: 0.012499998}
   m_ConstrainProportionsScale: 1
   m_Children:

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using static PublicControllerValue;
 
 public class PlayerCollider : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class PlayerCollider : MonoBehaviour
         // 물렸다는 안내가 떠 있을 때만 C키로 컨티뉴 허용
         if (Notice_Bitten != null && Notice_Bitten.gameObject.activeSelf)
         {
-            if (Input.GetKeyDown(continueKey))
+            if (RightContA)
             {
                 // 안내/버튼 숨기고 다시 움직이게
                 Notice_Bitten.gameObject.SetActive(false);
@@ -36,6 +37,7 @@ public class PlayerCollider : MonoBehaviour
                 WeaponKeyboardAim.PlayerCanMove = true;   // 다시 이동 가능
 
                 Debug.Log("[PlayerCollider] Continue 키 입력 - 게임 이어서 진행");
+                RightContA = false;
             }
         }
     }
@@ -44,6 +46,9 @@ public class PlayerCollider : MonoBehaviour
     {
         if (!other.CompareTag("Zombie"))
             return;
+
+        Debug.Log("충돌 감지: " + other.gameObject.name);
+        Point_Continue = true;
 
         // 좀비에 닿으면 일단 멈추고 Life 처리
         WeaponKeyboardAim.PlayerCanMove = false;
@@ -62,8 +67,6 @@ public class PlayerCollider : MonoBehaviour
         // 닿은 좀비 비활성화 + PlayerBitten 플래그
         other.gameObject.SetActive(false);
         WeaponKeyboardAim.PlayerBitten = true;
-
-        Debug.Log("Player has collided with a Zombie!");
     }
 
     // ★ 목숨 관리 함수

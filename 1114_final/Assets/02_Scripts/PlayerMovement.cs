@@ -1,4 +1,5 @@
 using UnityEngine;
+using static PublicControllerValue;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -32,17 +33,20 @@ public class PlayerMovement : MonoBehaviour
 
         // ----------- 입력 사운드 (WASD + 방향키) ----------- //
         // WASD
-        if (Input.GetKeyDown(KeyCode.W)) PlayInputSound();
-        if (Input.GetKeyDown(KeyCode.A)) PlayInputSound();
-        if (Input.GetKeyDown(KeyCode.S)) PlayInputSound();
-        if (Input.GetKeyDown(KeyCode.D)) PlayInputSound();
+        // if (Input.GetKeyDown(KeyCode.W)) PlayInputSound();
+        // if (Input.GetKeyDown(KeyCode.A)) PlayInputSound();
+        // if (Input.GetKeyDown(KeyCode.S)) PlayInputSound();
+        // if (Input.GetKeyDown(KeyCode.D)) PlayInputSound();
 
-        // 방향키 (Arrow Keys)
-        if (Input.GetKeyDown(KeyCode.UpArrow)) PlayInputSound();
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) PlayInputSound();
-        if (Input.GetKeyDown(KeyCode.DownArrow)) PlayInputSound();
-        if (Input.GetKeyDown(KeyCode.RightArrow)) PlayInputSound();
+        // // 방향키 (Arrow Keys)
+        // if (Input.GetKeyDown(KeyCode.UpArrow)) PlayInputSound();
+        // if (Input.GetKeyDown(KeyCode.LeftArrow)) PlayInputSound();
+        // if (Input.GetKeyDown(KeyCode.DownArrow)) PlayInputSound();
+        // if (Input.GetKeyDown(KeyCode.RightArrow)) PlayInputSound();
         // -------------------------------------------------- //
+
+        if (PlayerIsMoving)
+            PlayInputSound();
 
         // 지면 체크
         if (controller.isGrounded && velocity.y < 0)
@@ -72,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         // ----------------------------------
     }
 
-    private void PlayInputSound()
+    public void PlayInputSound()
     {
         if (inputAudioSource == null || inputSound == null)
             return;

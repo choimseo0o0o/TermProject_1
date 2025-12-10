@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using static PublicControllerValue;
 
 public class WeaponKeyboardAim : MonoBehaviour
 {
@@ -37,6 +39,10 @@ public class WeaponKeyboardAim : MonoBehaviour
     public static string ZombieName;
     private string PreviousZombieName;
 
+    public Animator GunFire;
+    public GameObject VFX_Flash;
+    public GameObject MiniMap;
+
     void Awake()
     {
         currentRayColor = defaultRayColor;
@@ -70,7 +76,44 @@ public class WeaponKeyboardAim : MonoBehaviour
         Ray ray = new Ray(originPos, originDir);
 
         HandleRaycast(ray);
-        UpdateCylinder(ray);
+        // UpdateCylinder(ray);
+
+        if (FireMotionOn)
+        {
+            Debug.Log("총 발사!");
+            PlayFireSound();
+            GunFire.SetBool("Fire", true);
+            if (!VFX_Flash.activeSelf)
+                VFX_Flash.SetActive(true);
+            FireMotionOn = false;
+        }
+        if (FireMotionOff)
+        {
+            GunFire.SetBool("Fire", false);
+            if (VFX_Flash.activeSelf)
+                VFX_Flash.SetActive(false);
+            FireMotionOff = false;
+        }
+
+        if (RightContA && Point_Continue)
+        {
+            ContinuePlay = true;
+            Point_Continue = false;
+            if (Notice_Dead != null)
+                Notice_Dead.gameObject.SetActive(false);
+            if (RestartButton != null)
+                RestartButton.SetActive(false);
+
+            Debug.Log("게임 재개 버튼 눌림");
+            PlayerCanMove = true;
+            RightContA = false;
+        }
+
+        if (MiniMap != null)
+        {
+            Debug.Log("RightThumbClick: " + RightThumbClick);
+            MiniMap.SetActive(!RightThumbClick);
+        }
     }
 
     void HandleAim()
@@ -89,10 +132,9 @@ public class WeaponKeyboardAim : MonoBehaviour
 
     void HandleRaycast(Ray ray)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (RightContTrig)
         {
-            // 🔊 스페이스바(발사) 사운드 재생
-            PlayFireSound();
+            RightContTrig = false;
 
             currentRayColor = firedRayColor;
 
@@ -105,14 +147,14 @@ public class WeaponKeyboardAim : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == continueLayer)
                 {
-                    ContinuePlay = true;
-                    if (Notice_Dead != null)
-                        Notice_Dead.gameObject.SetActive(false);
-                    if (RestartButton != null)
-                        RestartButton.SetActive(false);
+                    // ContinuePlay = true;
+                    // if (Notice_Dead != null)
+                    //     Notice_Dead.gameObject.SetActive(false);
+                    // if (RestartButton != null)
+                    //     RestartButton.SetActive(false);
 
-                    Debug.Log("게임 재개 버튼 눌림");
-                    PlayerCanMove = true;
+                    // Debug.Log("게임 재개 버튼 눌림");
+                    // PlayerCanMove = true; 
                 }
 
                 if (hit.collider.gameObject.layer == zombieLayer)
@@ -142,52 +184,52 @@ public class WeaponKeyboardAim : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else
         {
             currentRayColor = defaultRayColor;
         }
     }
 
-    void UpdateCylinder(Ray ray)
-    {
-        if (rayCylinder == null || cylMat == null)
-            return;
+    // void UpdateCylinder(Ray ray)
+    // {
+    //     if (rayCylinder == null || cylMat == null)
+    //         return;
 
-        Vector3 start = ray.origin;
-        Vector3 end = ray.origin + ray.direction * rayDistance;
-        Vector3 mid = (start + end) * 0.5f;
+    //     Vector3 start = ray.origin;
+    //     Vector3 end = ray.origin + ray.direction * rayDistance;
+    //     Vector3 mid = (start + end) * 0.5f;
 
-        // 위치: 시작점과 끝점의 가운데
-        rayCylinder.position = mid;
+    //     // 위치: 시작점과 끝점의 가운데
+    //     rayCylinder.position = mid;
 
-        // 방향: Ray 방향을 따라가도록 (Cylinder는 Y축이 길이)
-        rayCylinder.rotation =
-            Quaternion.LookRotation(ray.direction) * Quaternion.Euler(90f, 0f, 0f);
+    //     // 방향: Ray 방향을 따라가도록 (Cylinder는 Y축이 길이)
+    //     rayCylinder.rotation =
+    //         Quaternion.LookRotation(ray.direction) * Quaternion.Euler(90f, 0f, 0f);
 
-        // 스케일: 길이/굵기
-        rayCylinder.localScale = new Vector3(
-            cylinderRadius * 2f,      // X 지름
-            rayDistance * 0.5f,       // Y 길이 절반
-            cylinderRadius * 2f       // Z 지름
-        );
+    //     // 스케일: 길이/굵기
+    //     rayCylinder.localScale = new Vector3(
+    //         cylinderRadius * 2f,      // X 지름
+    //         rayDistance * 0.5f,       // Y 길이 절반
+    //         cylinderRadius * 2f       // Z 지름
+    //     );
 
-        cylMat.color = currentRayColor;
+    //     cylMat.color = currentRayColor;
 
-        // Scene 뷰 확인용
-        Debug.DrawRay(start, ray.direction * rayDistance, currentRayColor);
-    }
+    //     // Scene 뷰 확인용
+    //     Debug.DrawRay(start, ray.direction * rayDistance, currentRayColor);
+    // }
 
-    private void OnDrawGizmos()
-    {
-        Color gizmoColor = Application.isPlaying ? currentRayColor : defaultRayColor;
-        Gizmos.color = gizmoColor;
+    // private void OnDrawGizmos()
+    // {
+    //     Color gizmoColor = Application.isPlaying ? currentRayColor : defaultRayColor;
+    //     Gizmos.color = gizmoColor;
 
-        Transform originT = (rayOrigin != null) ? rayOrigin : transform;
-        Vector3 start = originT.position;
-        Vector3 end = start + originT.forward * rayDistance;
+    //     Transform originT = (rayOrigin != null) ? rayOrigin : transform;
+    //     Vector3 start = originT.position;
+    //     Vector3 end = start + originT.forward * rayDistance;
 
-        Gizmos.DrawLine(start, end);
-    }
+    //     Gizmos.DrawLine(start, end);
+    // }
 
     // 🔊 발사 사운드 전용 함수
     private void PlayFireSound()

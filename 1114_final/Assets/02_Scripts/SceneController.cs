@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;   // 코루틴용
+using static PublicControllerValue;
 
 public class SceneController : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class SceneController : MonoBehaviour
         // 2) 엔딩 씬이라면 Plane 3초 뒤에 등장
         if (SceneManager.GetActiveScene().name == endingSceneName && endingPlane != null)
         {
+            IsOkayToPressContB = true;
             endingPlane.SetActive(false);
             StartCoroutine(ShowPlaneAfterDelay());
         }
@@ -43,8 +45,9 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B) && !isTransitioning)
+        if (RightContB && !isTransitioning)
         {
+            RightContB = false;
             int current = SceneManager.GetActiveScene().buildIndex;
             int last = SceneManager.sceneCountInBuildSettings - 1;
 

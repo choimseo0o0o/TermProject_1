@@ -1,4 +1,5 @@
 using UnityEngine;
+using static PublicControllerValue;
 
 public class PlaneTrigger : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class PlaneTrigger : MonoBehaviour
         }
 
         planeObject.SetActive(true);
+        IsOkayToPressContB = true;
 
         // ★ Plane을 카메라의 자식으로 붙인다 → FPS 화면에 고정
         planeObject.transform.SetParent(cam.transform, worldPositionStays: false);

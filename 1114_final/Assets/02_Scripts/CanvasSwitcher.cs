@@ -1,4 +1,5 @@
 using UnityEngine;
+using static PublicControllerValue;
 
 public class CanvasSwitcher : MonoBehaviour
 {
@@ -10,14 +11,17 @@ public class CanvasSwitcher : MonoBehaviour
         // 시작 시 첫 번째 캔버스 ON, 두 번째 캔버스 OFF
         firstCanvas.SetActive(true);
         secondCanvas.SetActive(false);
+        Point_Continue = true;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (RightContA)
         {
             firstCanvas.SetActive(false);
             secondCanvas.SetActive(true);
+            RightContA = false;
+            IsOkayToPressContB = true;
         }
     }
 }

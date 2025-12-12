@@ -1158,7 +1158,7 @@ MonoBehaviour:
   player: {fileID: 3705769332928216515}
   zombieObject: {fileID: 673251706}
   animatorParamName: isChasing
-  moveSpeed: 2
+  moveSpeed: 1
   audioSource: {fileID: 395213650}
   soundChase: {fileID: 8300000, guid: b771cd0787c16e64e8e8ba11c3c83734, type: 3}
   soundBitten: {fileID: 8300000, guid: 3cdf4c2be56954143b45d7151c29046e, type: 3}
@@ -6421,7 +6421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: f7109080-3a7e-4c74-971b-ea5beb901947
+  instanceId: 353ec7a8-8ad6-4870-a609-22268e410104
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -7524,7 +7524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4160326e23fad4f46aa82be3236345be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.68
+      value: 2.294
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4160326e23fad4f46aa82be3236345be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7532,7 +7532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4160326e23fad4f46aa82be3236345be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.84
+      value: 13.446
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4160326e23fad4f46aa82be3236345be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9691,7 +9691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: 7e415c06-0833-4c52-87bb-ae37c095d376
+  instanceId: 817a38d8-1b5b-4241-8974-4d2a5174bca1
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -11565,6 +11565,22 @@ PrefabInstance:
       propertyPath: maxSeconds
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3371791344686095984, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221218996823612689, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -935.567
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221218996823612689, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -476.784
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221218996823612689, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.863
+      objectReference: {fileID: 0}
     - target: {fileID: 6401854514704547576, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
       propertyPath: duration
       value: 30
@@ -11923,7 +11939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: b4440eda-8de0-4153-a759-a2141f331d3f
+  instanceId: 1ff54863-1a06-4135-aee4-f6fb852ddab3
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -12498,7 +12514,6 @@ Transform:
   - {fileID: 5747173973790510877}
   - {fileID: 8530531867807032244}
   - {fileID: 9212547026487361199}
-  - {fileID: 187344516496430693}
   m_Father: {fileID: 2127523826162620200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857816534
@@ -13722,7 +13737,7 @@ MonoBehaviour:
   player: {fileID: 3705769332928216515}
   zombieObject: {fileID: 704415246}
   animatorParamName: isChasing
-  moveSpeed: 2
+  moveSpeed: 1
   audioSource: {fileID: 395213650}
   soundChase: {fileID: 8300000, guid: 168c9a5ac7025814ea9c89e5098a3cad, type: 3}
   soundBitten: {fileID: 8300000, guid: fa27cc20141074d4ea9024fe3d052c4f, type: 3}
@@ -14380,12 +14395,12 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913325876777678251}
   m_LocalRotation: {x: 0.088391356, y: 0.014671369, z: -0.00019113634, w: -0.99597776}
-  m_LocalPosition: {x: 0, y: 0, z: -44.611893}
+  m_LocalPosition: {x: 0, y: 0, z: -44.611885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8646950179359402112}
-  m_Father: {fileID: 1853582095}
+  m_Father: {fileID: 707089808209457058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14704,6 +14719,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1820337026}
+  - {fileID: 187344516496430693}
   m_Father: {fileID: 2127523826162620200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &709519922424315813
@@ -14802,7 +14818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1000174293095465413
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16259,7 +16275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &3703295202439090720
 GameObject:
   m_ObjectHideFlags: 0
@@ -18815,7 +18831,7 @@ Transform:
   m_GameObject: {fileID: 6423982114043454577}
   serializedVersion: 2
   m_LocalRotation: {x: -0.088391356, y: -0.014671369, z: 0.00019113634, w: -0.99597776}
-  m_LocalPosition: {x: -935.461, y: -477.328, z: -11.504}
+  m_LocalPosition: {x: -935.4292, y: -477.328, z: -11.0268}
   m_LocalScale: {x: 0.01, y: 0.011001735, z: 0.012499998}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -18838,7 +18854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localPosA: {fileID: 5950270840364583171}
   localPosB: {fileID: 3735444611406698102}
-  duration: 30
+  duration: 20
   showCanvas: {fileID: 2987501605341561896}
   ignoreCanvasAndPause: 0
 --- !u!114 &8679748452354641869

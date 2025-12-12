@@ -659,6 +659,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 684644041707988656, guid: c2f824918d8e9124bb84317dc18fc4cd, type: 3}
+      propertyPath: moveSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 684644041707988656, guid: c2f824918d8e9124bb84317dc18fc4cd, type: 3}
       propertyPath: soundChase
       value: 
       objectReference: {fileID: 8300000, guid: 12e7285fa38aaf943a0ed8c7f3c684eb, type: 3}
@@ -678,6 +682,10 @@ PrefabInstance:
       propertyPath: soundZombieDie
       value: 
       objectReference: {fileID: 8300000, guid: 98adac156ef91b64db5475e28522ee69, type: 3}
+    - target: {fileID: 3076352688536954850, guid: c2f824918d8e9124bb84317dc18fc4cd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6075246578313471542, guid: c2f824918d8e9124bb84317dc18fc4cd, type: 3}
       propertyPath: m_Name
       value: ZombieTriggerPoint1
@@ -7607,6 +7615,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 89855314528971540, guid: ac54e9b235e8ae143b463aa66e57d213, type: 3}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 89855314528971540, guid: ac54e9b235e8ae143b463aa66e57d213, type: 3}
       propertyPath: soundChase
       value: 
       objectReference: {fileID: 8300000, guid: 03b8b1c69e92dcf46a576b75d6752e4c, type: 3}
@@ -9999,6 +10011,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5624241726020270772, guid: 8c4c916b32e76e94c9c799a7ef38b7d2, type: 3}
+      propertyPath: moveSpeed
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624241726020270772, guid: 8c4c916b32e76e94c9c799a7ef38b7d2, type: 3}
       propertyPath: soundChase
       value: 
       objectReference: {fileID: 8300000, guid: a44885950b8b4f44a93017ce41a0638b, type: 3}
@@ -10167,6 +10183,10 @@ PrefabInstance:
     - target: {fileID: 1175993098139594837, guid: 6650d725955b24743929c62d96bc0476, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175993098139594837, guid: 6650d725955b24743929c62d96bc0476, type: 3}
+      propertyPath: moveSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1175993098139594837, guid: 6650d725955b24743929c62d96bc0476, type: 3}
       propertyPath: soundChase
@@ -10797,6 +10817,10 @@ PrefabInstance:
     - target: {fileID: 556050563771080693, guid: c732789b3601a4d42b56c3329995474a, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 556050563771080693, guid: c732789b3601a4d42b56c3329995474a, type: 3}
+      propertyPath: moveSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 556050563771080693, guid: c732789b3601a4d42b56c3329995474a, type: 3}
       propertyPath: soundChase
@@ -12508,6 +12532,50 @@ PrefabInstance:
       propertyPath: maxSeconds
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 3371791344686095984, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.66989356
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7161044
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.14332554
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.13377182
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -112.915
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -80.13699
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643315026153710876, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 80.927
+      objectReference: {fileID: 0}
     - target: {fileID: 6401854514704547576, guid: 7892e31ba7895764d89625a9618167c1, type: 3}
       propertyPath: duration
       value: 50
@@ -12947,9 +13015,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7364032253290983329, guid: 1dfb6c516d0dc4b49aa03c7fd170e079, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.773
+      objectReference: {fileID: 0}
     - target: {fileID: 7876585292748307313, guid: 1dfb6c516d0dc4b49aa03c7fd170e079, type: 3}
       propertyPath: m_Name
       value: Zombies
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270357977021102684, guid: 1dfb6c516d0dc4b49aa03c7fd170e079, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.231
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

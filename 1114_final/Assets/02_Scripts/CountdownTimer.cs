@@ -1,49 +1,96 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 [RequireComponent(typeof(TMP_Text))]
 public class CountdownTimer : MonoBehaviour
 {
-    [SerializeField] private int maxSeconds = 80;   // 인스펙터에서 설정할 최대 시간(초)
+    [Header("Timer")]
+    [SerializeField] private int maxSeconds = 80;
 
-    private float currentTime;      // 실제 카운트다운용 (float)
-    private TMP_Text timeText;      // "Time: xx" 를 표시하는 TextMeshPro
+    [Header("Game Over UI")]
+    [SerializeField] private GameObject gameOverUI;
 
-    void Awake()
+    [Header("Quit Settings")]
+    [SerializeField] private float quitDelaySeconds = 2f; // 인스펙터에서 조절
+
+    private float currentTime;
+    private TMP_Text timeText;
+
+    private bool isGameOver = false;
+    private bool isGameOverDisabled = false;
+
+    private void Awake()
     {
-        // 같은 GameObject에 붙어있는 TMP_Text 자동으로 찾기
         timeText = GetComponent<TMP_Text>();
+        if (gameOverUI != null) gameOverUI.SetActive(false);
     }
 
-    void Start()
+    private void Start()
     {
         currentTime = maxSeconds;
         UpdateTimeText();
     }
 
-    void Update()
+    private void Update()
     {
-        if (currentTime <= 0f) return;
+        if (isGameOver) return;
+        if (isGameOverDisabled) return;
 
-        // 매 프레임마다 시간 감소
         currentTime -= Time.deltaTime;
 
-        if (currentTime < 0f)
+        if (currentTime <= 0f)
+        {
             currentTime = 0f;
+            UpdateTimeText();
+            TriggerGameOver();
+            return;
+        }
 
         UpdateTimeText();
     }
 
-    // 화면에 보이는 텍스트 갱신
-    void UpdateTimeText()
+    private void UpdateTimeText()
     {
-        int displayTime = Mathf.CeilToInt(currentTime);   // 20,19,18 처럼 정수로 표시
+        int displayTime = Mathf.CeilToInt(currentTime);
         timeText.text = $"Time : {displayTime}";
     }
 
-    // 필요하면 외부에서 다시 리셋 가능
-    public void ResetTimer()
+    private void TriggerGameOver()
     {
-        currentTime = maxSeconds;
+        if (isGameOver) return;
+        isGameOver = true;
+
+        if (gameOverUI != null)
+            gameOverUI.SetActive(true);
+
+        // UI 보일 시간 확보 후 종료
+        StartCoroutine(QuitAfterDelay());
+    }
+
+    private IEnumerator QuitAfterDelay()
+    {
+        // 필요하면 게임 멈추고 UI만 보여주기
+        Time.timeScale = 0f;
+
+        // WaitForSeconds는 timeScale 영향을 받으니 Realtime 사용
+        yield return new WaitForSecondsRealtime(quitDelaySeconds);
+
+        QuitGame();
+    }
+
+    public void DisableGameOver(bool disable)
+    {
+        isGameOverDisabled = disable;
+        if (disable && gameOverUI != null) gameOverUI.SetActive(false);
+    }
+
+    private void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

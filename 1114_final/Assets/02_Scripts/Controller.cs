@@ -35,6 +35,7 @@ namespace SimpleFPS
         {
             if (rightController == null) return;
 
+            Debug.Log("Is okay to press ContB? " + IsOkayToPressContB);
             GunTimer += Time.deltaTime;
             IndexTimer += Time.deltaTime;
 
@@ -62,7 +63,12 @@ namespace SimpleFPS
 
             // B 버튼 누름
             if (OVRInput.GetDown(OVRInput.Button.Two) && IsOkayToPressContB)
+            {
                 RightContB = true;
+                IsOkayToPressContB = false;
+
+            }
+                
 
             if(OVRInput.GetDown(OVRInput.Button.Four))
                 RightThumbClick = !RightThumbClick;
